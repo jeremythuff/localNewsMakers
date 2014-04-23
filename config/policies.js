@@ -23,11 +23,13 @@ module.exports.policies = {
   	'create': 'flash',
   	'show': 'ownerCheck',
   	'edit': 'ownerCheck',
+  	'update': 'ownerCheck',
   	'*': 'auth'
   },
 
   story: {
   	'edit': 'ownerCheck',
+  	'update': 'ownerCheck',
   	'*': 'auth'
   }
 

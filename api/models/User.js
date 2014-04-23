@@ -55,7 +55,6 @@ module.exports = {
   },
 
   beforeCreate: function (values, next) {
-    console.log("boo");
     if (!values.password || values.password != values.confirmation) {
       return next({err: ["Password doesn't match password confirmation."]});
     }
