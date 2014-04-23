@@ -1,0 +1,2 @@
+# localNews
+### a Sails application

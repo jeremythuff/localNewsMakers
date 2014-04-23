@@ -1,0 +1,41 @@
+<div class='container showUser'>
+	<span class="score badge"><h3><%= user.score %></h3></span>
+	<h2><%= user.email %></h2>
+	<a href='/user/edit/<%- user.id%>' class=' btn btn-warning editUser'>Edit Profile</a>
+	<hr class="clearFix">
+	<ul>
+		
+		<div class="displayGroup">
+			<h4 class="displayLabel">Gravatar:</h3>
+			<% if(user.gravatar) {%>
+				<li><img class="gravitar" src="<%=user.gravatar%>"></li>
+			<%}%>
+		</div>
+		<div class="displayGroup">
+			<h4 class="displayLabel">Name:</h3>
+			<%if(user.firstName){%>
+				<li>First: <%= user.firstName %></li>
+			<%}%>
+			<% if(user.lastName){%>
+			<li>Last: <%= user.lastName %></li>
+			<%}%>
+		</div>
+		<div class="displayGroup">
+			<h4 class="displayLabel">Date of Birth:</h3>
+			<% if(user.birthDate) {%>
+				<li><%= user.birthDate %> </li>
+			<%}%>
+		</div>
+		<div class="displayGroup">
+			<h4 class="displayLabel">Password:</h3>
+			
+			<li><button class='btn btn-warning changePasswordBtn'>Change Password</button> </li>
+		
+		</div>
+
+		<div class="displayGroup">
+			<h4 class="displayLabel">Stories:</h3>
+			<%- partial('../globalPartials/listStories.ejs')%>
+		</div>
+	</ul>
+</div>

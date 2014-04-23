@@ -1,0 +1,19 @@
+<div class="readStory container">
+	<h2 class="badge pull-left"><a href='/story/downVote/<%=story.id%>'><span class="glyphicon glyphicon-minus"></a></span> <%= story.score %> <a href='/story/upVote/<%=story.id%>'><span class="glyphicon glyphicon-plus"></span></a></h2>	
+	<h2 class="featurette-heading"> <%= story.title %> | <span class="text-muted"><%= story.authorDisplayName %><span></h2>
+	<%- story.body %>
+	<br>
+	<hr>
+	<ul  class='tagList'>
+	<% _.each(story.tags , function(tag){ %>
+		<li  class='badge'><%- tag %></li>
+	<% }) %>
+	</ul>
+
+	<h3>Associated Media</h3>
+	<ul class='assocMedia'>
+	<% _.each(story.images , function(src){ %>
+		<li><img class="media" src="<%- src %>"></li>
+	<% }) %>
+	</ul>
+</div>

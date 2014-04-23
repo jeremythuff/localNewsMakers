@@ -1,0 +1,16 @@
+<div class="container editProfile">
+  <form action="/user/update/<%-user.id%>" method="POST"class="form-signin" role="form">
+    <h2 class="form-signin-heading">Edit <%= user.email %></h2>
+    
+    <input value="<%= user.firstName %>" type="text" class="form-control textInput" placeholder="First Name" name="firstName">
+
+    <input value="<%= user.lastName %>" type="text" class="form-control textInput" placeholder="Last Name" name="lastName">
+    
+    <input value="<%if(user.gravatar){%><%= user.gravatar %><%}%>" type="text" class="form-control textInput" placeholder="Gravatar" name="gravatar">
+
+    <input value="<%if(user.birthDate){%><%= user.birthDate %><%}%>" type="text" class="form-control textInput" placeholder="Birth Date" name="birthDate">
+
+    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Make Changes">
+    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+  </form>
+</div>

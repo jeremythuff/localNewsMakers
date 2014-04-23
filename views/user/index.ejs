@@ -1,0 +1,43 @@
+<div class='container showUsers'>
+
+  <h3>User Management</h3>
+
+  <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Email</th>
+                  <th>Score</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% _.each(users, function(user) { %>
+                  <tr data-id='<%= user.id %>' data-model='user'>
+                    <td><%= user.id %></td>
+                    <td><%= user.email %></td>
+                    <td><span class="badge"><%= user.score %></span></td>
+                    <td><a href='/user/show/<%= user.id %>' class="btn btn-sm btn-primary">Show</a></td>
+                    <td><a href='/user/edit/<%= user.id %>' class="btn btn-sm btn-warning">Edit</a></td>
+                    <td>
+                      
+                      <button class="deleteBtn btn btn-sm btn-danger">Delete</button>
+                      <form action="/user/destroy/<%- user.id %>" method="POST">
+                        <div class="btn-group confirmDelete" style="display:none;">
+                          <button type="button" class="btn btn-sm btn-danger disabled">Delete</button>
+                          <input type="hidden" name="_method" value="delete" />
+                          <input type="submit" value="Confirm" class="btn btn-sm btn-success">
+                          <input type="hidden" name="_csrf" value="<%= _csrf %>" />  
+                        </div>
+                      </form>                    
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+
+</div>

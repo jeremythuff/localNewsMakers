@@ -1,0 +1,51 @@
+<div class="indexStories container">
+<h3>Story Management</h3>
+
+  	<div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Score</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% _.each(stories, function(story) { %>
+              <tr data-id='<%= story.id %>' data-model='story'>
+                <td><%= story.id %></td>
+                <td><%= story.title %></td>
+                <td><%= story.authorDisplayName %></td>             
+                <td><span class="badge"><%= story.score %></span></td>
+                <td>
+                  <% if(!story.published) { %>
+                  <a href="/story/publish/<%=story.id%>"><button class="btn btn-success btn-sm">Publish</button></a>
+                <% } else { %>
+                  <a  href="/story/unpublish/<%=story.id%>"><button class="btn btn-warning btn-sm">Unpublish</button></a>
+                <% } %>
+                </td>
+                <td><a href='/story/read/<%= story.id %>' class="btn btn-sm btn-primary">Show</a></td>
+                <td><a href='/story/edit/<%= story.id %>' class="btn btn-sm btn-warning">Edit</a></td>
+                <td>
+                  
+                  <button class="deleteBtn btn btn-sm btn-danger">Delete</button>
+                  <form action="/story/destroy/<%- story.id %>" method="POST">
+                    <div class="btn-group confirmDelete" style="display:none;">
+                      <button type="button" class="btn btn-sm btn-danger disabled">Delete</button>
+                      <input type="hidden" name="_method" value="delete" />
+                      <input type="submit" value="Confirm" class="btn btn-sm btn-success">
+                      <input type="hidden" name="_csrf" value="<%= _csrf %>" />  
+                    </div>
+                  </form>                    
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+<script>
+tinymce.init({
+    selector: "textarea"
+ });
+</script>
+
+<div class="newStory container">
+	<form action="/story/create" method="POST" class="form-signin" role="form">
+		<input type="text" class="form-control titleInput" placeholder="title" name="title">
+		
+		<textarea class="form-control" rows="25" name="body"></textarea>
+
+		<input type="text" class="form-control tagInput" placeholder="Image URI" name="images">
+
+		<input type="text" class="form-control tagInput" placeholder="Video URI" name="videos">
+
+		<input type="text" class="form-control tagInput" placeholder="tags" name="tags">
+
+		<input class="btn btn-lg btn-primary btn-block postStory" type="submit" value="Post Article">
+		
+	    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+	</form>
+</div> 
